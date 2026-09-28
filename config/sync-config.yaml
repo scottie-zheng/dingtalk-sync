@@ -1,0 +1,40 @@
+# 钉钉数据同步配置
+
+# ===== 认证配置 =====
+dingtalk:
+  app_key: "${DINGTALK_APP_KEY}"
+  app_secret: "${DINGTALK_APP_SECRET}"
+
+# ===== 操作者配置 =====
+operator:
+  # 用你自己的钉钉 userId（在钉钉管理后台 → 通讯录 → 成员管理 中查看）
+  user_id: "${DINGTALK_OPERATOR_USER_ID}"
+
+# ===== 存储配置 =====
+storage:
+  rds:
+    host: "127.0.0.1"
+    port: 3306
+    database: "dingtalk_sync"
+    user: "sync_user"
+    password: "sync_pass123"
+  redis:
+    host: "127.0.0.1"
+    port: 6379
+    db: 0
+
+# ===== 同步范围配置 =====
+sync_scope:
+  wiki:
+    # 知识库 workspace_id 列表（后续通过 API 获取后填入）
+    workspace_ids: []
+  files:
+    # 钉盘空间 space_id 列表
+    space_ids: []
+    # 在线文档 space_id 列表
+    doc_space_ids: []
+
+# ===== 调度配置 =====
+schedule:
+  # 天级采集时间（HH:MM），本地测试时手动触发
+  daily_sync_time: "02:00"
